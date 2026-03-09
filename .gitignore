@@ -3,6 +3,7 @@
 [Bb]uild/
 [Bb]uilds/
 [Ll]ogs/
+[Oo]bj/
 UserSettings/
 
 *.csproj
