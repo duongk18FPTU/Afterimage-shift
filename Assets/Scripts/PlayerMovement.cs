@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     public int maxExtraJumps = 1;
     private int extraJumps;
+    public AudioSource audioSource;
+    public AudioClip jumpSound;
 
     // Danh sách lưu lại vị trí để tạo "Dư ảnh" sau này
     public List<Vector3> positionHistory = new List<Vector3>();
@@ -35,11 +37,13 @@ public class PlayerMovement : MonoBehaviour
             if (isGrounded)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                audioSource.PlayOneShot(jumpSound); // 🔊 phát sound
             }
             else if (extraJumps > 0)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                 extraJumps--; // Trừ đi 1 lần nhảy trên không
+                audioSource.PlayOneShot(jumpSound);
             }
         }
 
